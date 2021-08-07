@@ -11,13 +11,14 @@ export default function usePapersList() {
         location,
         apiKey = localStorage.getItem("@apiKey")
     ) {
-        if(!apiKey)
+        if (!apiKey)
             alert("Please, set up your API key before making a request!");
         if (!location || !subject) {
             setPapersList([]);
         } else if (localCache[location + subject]) {
             setPapersList(localCache[location + subject]);
         } else {
+            console.log("Making request!");
             setStatus("loading");
             const requestUrl = `https://api.elsevier.com/content/search/scopus?apiKey=${apiKey}&subj=${subject}&query=AFFILORG(${location})`;
             const papersResponse = await fetch(requestUrl);

@@ -1,34 +1,45 @@
 /* eslint-disable react/prop-types */
+/* eslint-disable jsx-a11y/no-onchange */
+
 import M from "materialize-css";
 import React from "react";
 import { useState } from "react";
 import Papers from "./Papers";
 import usePapersList from "./usePapersList";
+import listOfSubjects from "./staticSubjOptions";
 
 const Card = ({ cardTitle, cardSubtitle }) => {
     const [location, setLocation] = useState("");
-    const [compromise, setCompromise] = useState("");
+    const [studyObj, setStudyObj] = useState("AGRI");
     const [apiKey, setApiKey] = useState("");
 
     const [papersList, requestPapersList, status] = usePapersList();
 
     function handleSubmit(event) {
-        requestPapersList(compromise, location);
-        console.log("paper list >", papersList);
-
+        let formatLocation = location.toLowerCase();
+        formatLocation = formatLocation.replaceAll(" ", "+");
+        console.log(formatLocation, studyObj);
+        requestPapersList(studyObj, formatLocation);
         event.preventDefault();
         setLocation("");
-        setCompromise("");
+        console.log(papersList);
     }
 
-    function handleModalSubmit(event){
-        localStorage.setItem("@apiKey",apiKey);
+    function handleModalSubmit(event) {
+        localStorage.setItem("@apiKey", apiKey);
         event.preventDefault();
     }
+
     //To access the materialize modal structure!
-    document.addEventListener('DOMContentLoaded', function() {
-        var elems = document.querySelectorAll('.modal');
+    document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll(".modal");
         M.Modal.init(elems);
+    });
+
+    //To open the options menu
+    document.addEventListener("DOMContentLoaded", function () {
+        var elems = document.querySelectorAll("select");
+        M.FormSelect.init(elems);
     });
 
     return (
@@ -54,20 +65,24 @@ const Card = ({ cardTitle, cardSubtitle }) => {
                             />
                         </label>
 
-                        <label
-                            className="search-compromise"
-                            htmlFor="compromise"
-                        >
-                            <br />
-                            <input
-                                id="compromise"
+                        <div className="input-field col s12">
+                            <select
+                                name="select_input"
+                                id="select_input"
                                 onChange={(event) => {
-                                    setCompromise(event.target.value);
+                                    setStudyObj(event.target.value);
                                 }}
-                                value={compromise}
-                                placeholder="Subject of Study"
-                            />
-                        </label>
+                            >
+                                {listOfSubjects.map((subj) => {
+                                    let subjVal = subj.split("-")[0].replaceAll(" ","");
+                                    return (
+                                        <option key={subjVal} value={subjVal}>
+                                            {subj}
+                                        </option>
+                                    );
+                                })}
+                            </select>
+                        </div>
 
                         <button
                             className="btn waves-effect waves-light"
@@ -91,8 +106,15 @@ const Card = ({ cardTitle, cardSubtitle }) => {
                 <div id="storeApiKey" className="modal">
                     <div className="modal-content">
                         <h4>Add your Scopus API Key!</h4>
-                        <p>The scopus API Key is unique and you can get it for free! Just access: <a href="https://dev.elsevier.com/">Scopus Dev</a></p>
-                        <form className="modal-form" onSubmit={handleModalSubmit}>
+                        <p>
+                            The scopus API Key is unique and you can get it for
+                            free! Just access:
+                            <a href="https://dev.elsevier.com/">Scopus Dev</a>
+                        </p>
+                        <form
+                            className="modal-form"
+                            onSubmit={handleModalSubmit}
+                        >
                             <label className="api-key-form" htmlFor="apiKey">
                                 <br />
                                 <input
@@ -115,7 +137,12 @@ const Card = ({ cardTitle, cardSubtitle }) => {
                         </form>
                     </div>
                     <div className="modal-footer">
-                        <a href="#!" className="modal-close waves-effect waves-green btn-flat">Got it!</a>
+                        <a
+                            href="#!"
+                            className="modal-close waves-effect waves-green btn-flat"
+                        >
+                            Got it!
+                        </a>
                     </div>
                 </div>
             </div>

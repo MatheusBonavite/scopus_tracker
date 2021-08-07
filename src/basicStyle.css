@@ -32,11 +32,6 @@
     justify-content: center;
 }
 
-.apiResult{
-    flex-basis: 100%;
-    text-align: center;
-}
-
 .card{
     background-color: #f9f9f9;
 }
@@ -62,10 +57,12 @@
 
 .api-result{
     flex-basis: 100%;
+    text-align: center;
 }
 
 .loader{
     flex-basis: 100%;
+    text-align: center;
 }
 
 

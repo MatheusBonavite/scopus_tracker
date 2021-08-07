@@ -5,7 +5,6 @@ import Card from "./Card.js";
 import { StrictMode } from "react";
 import PaperDetails from "./PaperDetails.js";
 
-
 const App = () => {
     return (
         <>
@@ -16,7 +15,10 @@ const App = () => {
                             <PaperDetails />
                         </Route>
                         <Route path="">
-                            <Card cardTitle={"Paper Search"} cardSubtitle={"Query Papers on Scopus!"}/>
+                            <Card
+                                cardTitle={"Paper Search"}
+                                cardSubtitle={"Query Papers on Scopus!"}
+                            />
                         </Route>
                     </Switch>
                 </Router>
@@ -26,6 +28,8 @@ const App = () => {
 };
 
 ReactDOM.render(
-    <StrictMode><App /></StrictMode>,
+    <StrictMode>
+        <App />
+    </StrictMode>,
     document.getElementById("root")
 );
