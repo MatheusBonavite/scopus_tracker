@@ -3,6 +3,7 @@
 import React from "react";
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Link } from "react-router-dom";
+import MTable from "./materialize_comp/MTable.js";
 
 // import { useEffect, useState } from "react";
 
@@ -31,57 +32,17 @@ const Papers = ({ papersList, status }) => {
             {papersList?.length != 0 && (
                 //Materialize Table
                 <div className="api-result">
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>Article Number</th>
-                                <th>DOI</th>
-                                <th>Title</th>
-                                <th>Cover Date</th>
-                                <th>Author</th>
-                                <th>Cited By:</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {papersList["search-results"]?.entry?.map(
-                                (paper) => {
-                                    return (
-                                        <tr key={paper["dc:identifier"]}>
-                                            <td key={paper["article-number"]}>
-                                                {paper["article-number"]}
-                                            </td>
-
-                                            <td key={paper["prism:doi"]}>
-                                                {paper["prism:doi"]}
-                                            </td>
-
-                                            <td key={paper["dc:title"]}>
-                                                <Link
-                                                    to={`/details/${paper[
-                                                        "dc:creator"
-                                                    ].replaceAll(" ", "")}`}
-                                                >
-                                                    {paper["dc:title"]}
-                                                </Link>
-                                            </td>
-
-                                            <td key={paper["prism:coverDate"]}>
-                                                {paper["prism:coverDate"]}
-                                            </td>
-
-                                            <td key={paper["dc:creator"]}>
-                                                {paper["dc:creator"]}
-                                            </td>
-
-                                            <td key={paper["citedby-count"]}>
-                                                {paper["citedby-count"]}
-                                            </td>
-                                        </tr>
-                                    );
-                                }
-                            )}
-                        </tbody>
-                    </table>
+                    <MTable
+                        paramsOfInterest={[
+                            "Article Number",
+                            "DOI",
+                            "Title",
+                            "Cover Date",
+                            "Author",
+                            "Cited By:",
+                        ]}
+                        papersList={papersList}
+                    />
                 </div>
             )}
         </>
