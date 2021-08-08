@@ -1,12 +1,12 @@
+/* eslint-disable react/prop-types */
 import React from "react";
 import { Component } from "react";
 // eslint-disable-next-line no-unused-vars
 import { BrowserRouter as Router, Link } from "react-router-dom";
 
 class MTable extends Component {
-    constructor(props) {
+    constructor() {
         super();
-        this.state = { ...props };
     }
 
     componentDidMount() {
@@ -18,13 +18,13 @@ class MTable extends Component {
             <table>
                 <thead>
                     <tr>
-                        {this.state.paramsOfInterest.map((interestParam) => {
+                        {this.props.paramsOfInterest.map((interestParam) => {
                             return <th key={interestParam}>{interestParam}</th>;
                         })}
                     </tr>
                 </thead>
                 <tbody>
-                    {this.state.papersList["search-results"]?.entry?.map(
+                    {this.props.papersList["search-results"]?.entry?.map(
                         (paper) => {
                             return (
                                 <tr key={paper["dc:identifier"]}>
