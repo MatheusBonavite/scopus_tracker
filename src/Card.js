@@ -74,7 +74,9 @@ const Card = ({ cardTitle, cardSubtitle }) => {
                                 }}
                             >
                                 {listOfSubjects.map((subj) => {
-                                    let subjVal = subj.split("-")[0].replaceAll(" ","");
+                                    let subjVal = subj
+                                        .split("-")[0]
+                                        .replaceAll(" ", "");
                                     return (
                                         <option key={subjVal} value={subjVal}>
                                             {subj}

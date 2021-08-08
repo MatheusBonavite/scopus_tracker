@@ -1,6 +1,9 @@
 /* eslint-disable react/prop-types */
 
 import React from "react";
+// eslint-disable-next-line no-unused-vars
+import { BrowserRouter as Router, Link } from "react-router-dom";
+
 // import { useEffect, useState } from "react";
 
 const Papers = ({ papersList, status }) => {
@@ -24,12 +27,12 @@ const Papers = ({ papersList, status }) => {
                     </div>
                 </div>
             )}
-            
+
             {papersList?.length != 0 && (
                 //Materialize Table
                 <div className="api-result">
                     <table>
-                            <thead>
+                        <thead>
                             <tr>
                                 <th>Article Number</th>
                                 <th>DOI</th>
@@ -38,23 +41,46 @@ const Papers = ({ papersList, status }) => {
                                 <th>Author</th>
                                 <th>Cited By:</th>
                             </tr>
-                            </thead>
-                            <tbody>
-                            {
-                                papersList["search-results"]?.entry?.map(paper => {
-                                    return(
-                                        <tr key={paper['dc:identifier']}>
-                                            <td key={paper['article-number']}>{paper['article-number']}</td>
-                                            <td key={paper['prism:doi']}>{paper['prism:doi']}</td>
-                                            <td key={paper['dc:title']}>{paper['dc:title']}</td>
-                                            <td key={paper['prism:coverDate']}>{paper['prism:coverDate']}</td>
-                                            <td key={paper['dc:creator']}>{paper['dc:creator']}</td>
-                                            <td key={paper['citedby-count']}>{paper['citedby-count']}</td>
+                        </thead>
+                        <tbody>
+                            {papersList["search-results"]?.entry?.map(
+                                (paper) => {
+                                    return (
+                                        <tr key={paper["dc:identifier"]}>
+                                            <td key={paper["article-number"]}>
+                                                {paper["article-number"]}
+                                            </td>
+
+                                            <td key={paper["prism:doi"]}>
+                                                {paper["prism:doi"]}
+                                            </td>
+
+                                            <td key={paper["dc:title"]}>
+                                                <Link
+                                                    to={`/details/${paper[
+                                                        "dc:creator"
+                                                    ].replaceAll(" ", "")}`}
+                                                >
+                                                    {paper["dc:title"]}
+                                                </Link>
+                                            </td>
+
+                                            <td key={paper["prism:coverDate"]}>
+                                                {paper["prism:coverDate"]}
+                                            </td>
+
+                                            <td key={paper["dc:creator"]}>
+                                                {paper["dc:creator"]}
+                                            </td>
+
+                                            <td key={paper["citedby-count"]}>
+                                                {paper["citedby-count"]}
+                                            </td>
                                         </tr>
-                                    )
-                                })
-                            }
-                            </tbody>
+                                    );
+                                }
+                            )}
+                        </tbody>
                     </table>
                 </div>
             )}
