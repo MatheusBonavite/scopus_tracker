@@ -1,3 +1,5 @@
+/* eslint-disable no-undef */
+/* eslint-disable @typescript-eslint/no-unsafe-assignment */
 // eslint-disable-next-line no-undef
 module.exports = {
     env: {
@@ -23,6 +25,7 @@ module.exports = {
             jsx: true,
         },
         ecmaVersion: 2018,
+        tsconfigRootDir: __dirname,
         project: './tsconfig.eslint.json',
         sourceType: 'module',
     },
