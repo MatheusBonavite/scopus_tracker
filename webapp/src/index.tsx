@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactDOM from "react-dom";
+import { StrictMode } from 'react';
 
 const Application: React.FunctionComponent<{}> = () => {
     return (
@@ -8,6 +9,8 @@ const Application: React.FunctionComponent<{}> = () => {
 }
 
 ReactDOM.render(
-    <Application></Application>,
+    <StrictMode>
+        <Application />
+    </StrictMode>,
     document.getElementById("root")
 );
