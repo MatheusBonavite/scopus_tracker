@@ -71,7 +71,7 @@ web_modules/
 .yarn-integrity
 
 # dotenv environment variables file
-.env
+#.env #Keeping this guy for now because of the SASS_PATH
 .env.test
 .env.production
 

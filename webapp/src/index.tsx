@@ -1,6 +1,7 @@
 import React from 'react';
 import ReactDOM from "react-dom";
 import { StrictMode } from 'react';
+import './assets/index.scss';
 
 const Application: React.FunctionComponent<{}> = () => {
     return (
