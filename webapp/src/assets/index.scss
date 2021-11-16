@@ -1,9 +1,10 @@
-@import 'base';
+@import 'styles/base';
 
 html,
 body,
 div#root {
     @include full-page;
+    @include responsiveness('.centralBoard');
     margin: 0;
     padding: 0;
 }

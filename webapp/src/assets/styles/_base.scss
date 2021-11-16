@@ -1,8 +1,21 @@
-@mixin full-page{
+@import 'styles/components/centralBoard';
+@import 'styles/functions/responsiveness';
+
+@mixin full-page {
     height: 100%;
     width: 100%;
     left: 0;
     top: 0;
     position: absolute;
     box-sizing: border-box;
+}
+
+@mixin responsiveness($class, $breakpoints: 10) {
+    @for $i from 0 to $breakpoints {
+        @media screen and (min-width: ($i * 100px)) {
+            #{$class} {
+                font-size: calculate-responsiveness(($i * 100px));
+            }
+        }
+    }
 }

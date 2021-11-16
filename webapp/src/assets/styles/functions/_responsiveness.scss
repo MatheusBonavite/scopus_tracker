@@ -1,0 +1,12 @@
+@function calculate-responsiveness($screen-px) {
+    $screen-to-rem: (
+        300px: 0.85em,
+        400px: 0.85em,
+        500px: 0.95em,
+        600px: 0.95em,
+        700px: 1.25em,
+        800px: 1.25em,
+        900px: 1.5em,
+    );
+    @return map-get($screen-to-rem, $screen-px);
+}
