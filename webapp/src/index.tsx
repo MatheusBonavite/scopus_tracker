@@ -1,10 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { StrictMode } from 'react';
+import CentralBoard from './assets/Components/CentralBoard/CentralBoard';
 import './assets/index.scss';
 
 const Application: React.FunctionComponent<Record<string, unknown>> = () => {
-    return <h1>My Scopus Tracker App!</h1>;
+    return <CentralBoard />;
 };
 
 ReactDOM.render(
