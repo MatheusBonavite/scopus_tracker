@@ -1,5 +1,5 @@
 @import 'styles/base';
-
+$black-coffe: #32292f;
 html,
 body,
 div#root {
@@ -7,4 +7,20 @@ div#root {
     @include responsiveness('.centralBoard');
     margin: 0;
     padding: 0;
+    font-family: 'Karla', sans-serif;
+    font-weight: 400;
+}
+
+h1 {
+    font-family: 'Martel', serif;
+    font-weight: 400;
+    color: $black-coffe;
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+    color: $black-coffe;
 }
