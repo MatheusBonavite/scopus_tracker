@@ -5,7 +5,9 @@ body,
 div#root {
     @include full-page;
     @include responsiveness('.centralBoard');
-    margin: 0;
+    @include responsiveness('.card-1');
+    @include responsiveness('.card-2');
+    @include responsiveness('.card-3');
     padding: 0;
     font-family: 'Karla', sans-serif;
     font-weight: 400;

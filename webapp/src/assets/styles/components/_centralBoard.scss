@@ -14,3 +14,13 @@
         text-align: center;
     }
 }
+.cardHolder {
+    display: flex;
+    flex-wrap: nowrap;
+    flex-direction: row;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}

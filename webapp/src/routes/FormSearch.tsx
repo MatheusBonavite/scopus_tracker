@@ -1,10 +1,10 @@
 import React from 'react';
+import FormBoard from '../assets/Components/Form/FormBoard';
 
 const FormSearch = () => {
     return (
         <div>
-            <h1>Im a form! Whatever!</h1>
-            <h3>Oooops daysis</h3>
+            <FormBoard />
         </div>
     );
 };

@@ -1,10 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 const FormBoard = () => {
+    const [location, setLocation] = useState('');
     return (
-        <div>
-            <h1> Im a React Form! </h1>
-        </div>
+        <form className="form">
+            <label htmlFor="location">
+                <br />
+                <input
+                    id="location"
+                    type="text"
+                    className="input location"
+                    placeholder={location}
+                    onChange={(event) => setLocation(event.target.value)}
+                    onBlur={(event) => setLocation(event.target.value)}
+                />
+            </label>
+        </form>
     );
 };
 

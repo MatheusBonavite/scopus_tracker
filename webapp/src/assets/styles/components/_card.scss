@@ -1,4 +1,17 @@
-.card {
+@mixin margin-opacity-control-animation {
+    @keyframes margin-opacity-control {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+            transform: translateY(-5%);
+        }
+    }
+}
+.card-1,
+.card-2,
+.card-3 {
     background-color: #d1e3dd;
     border: 1px solid #111111;
     border-radius: 0.5em;
@@ -8,9 +21,14 @@
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-
-    h1 {
-        width: 100%;
-        text-align: center;
+    height: 80%;
+    &:hover {
+        @include margin-opacity-control-animation;
+        background-color: #ce5374;
+        animation: margin-opacity-control 1s forwards;
+        cursor: pointer;
+    }
+    h3 {
+        color: #9c0d38;
     }
 }
